@@ -39,6 +39,9 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
+player = Player('Conrad', room['outside'])
+print(f'Player {player.name} is currently in {player.currrent_room.location}')
+
 # Write a loop that:
 #
 # * Prints the current room name
@@ -49,3 +52,12 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+while True:
+
+    movement = input("\n Move by inputting n, s, e, or w to move or press q to quite")
+
+    if(movement == 'n'):
+        if (player.current_room.n_to is not None):
+            player.current_room = player.current_room.n_to
+            print(f'{player.name} is now in {player.current_room.location}. {player.current_room.discription}')
