@@ -40,8 +40,8 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-player = Player('Conrad', room['outside'])
-print(f'Player {player.name} is currently in {player.current_room.location}')
+player = Player("John", room["outside"])
+print(f"Player {player.name} is currently in {player.current_room.roomName}")
 
 # Write a loop that:
 #
@@ -54,11 +54,45 @@ print(f'Player {player.name} is currently in {player.current_room.location}')
 #
 # If the user enters "q", quit the game.
 
-while True:
 
-    movement = input("\n Move by inputting n, s, e, or w to move or press q to quite  ")
+m = ""
 
-    if(movement == 'n'):
-        if (player.current_room.n_to is not None):
+while m != "q":
+
+    m = input("Move by inputting n, s, e, or w to move or press q to quite  ")
+
+    if m == "n":
+        if player.current_room.n_to is not None:
             player.current_room = player.current_room.n_to
-            print(f'{player.name} is now in {player.current_room.location}. {player.current_room.description}')
+            print(f"{player.name} has moved to {player.current_room.roomName}. {player.current_room.description}")
+        else:
+            print("Nothing appears to be in that direction!")
+    
+    elif m == "s":
+        if player.current_room.s_to is not None:
+            player.current_room = player.current_room.s_to
+            print(f"{player.name} has moved to {player.current_room.roomName}. {player.current_room.description}")
+        else:
+           print("Nothing appears to be in that direction!")
+
+    elif m == "e":
+        if player.current_room.e_to is not None:
+            player.current_room = player.current_room.e_to
+            print(f"{player.name} has moved to {player.current_room.roomName}. {player.current_room.description}")
+        else:
+           print("Nothing appears to be in that direction!")
+
+    elif m == "w":
+        if player.current_room.w_to is not None:
+            player.current_room = player.current_room.w_to
+            print(f"{player.name} has moved to {player.current_room.roomName}. {player.current_room.description}")
+        else:
+           print("Nothing appears to be in that direction!")
+
+    elif m == "q":
+        print("Goodbye!")
+        exit()
+    else:
+        print('Move by inputting n, s, e, or w')
+
+    
