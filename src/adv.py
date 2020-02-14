@@ -59,7 +59,7 @@ m = ""
 
 while m != "q":
 
-    m = input("Move by inputting n, s, e, or w to move or press q to quite  ")
+    m = input("Move by inputting n, s, e, or w to move or press q to quit  ")
 
     if m == "n":
         if player.current_room.n_to is not None:
