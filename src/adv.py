@@ -1,25 +1,26 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", [Item("Iphone", "Unforutnately uses Sprint, no phone calls can be made")]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [Item("Stick of Gum", "Your breath stinks, you'll probably need this!")]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", [Item("Lego", "Stepped on this when you walked in, probably hurt like hell!")]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+to north. The smell of gold permeates the air.""", [Item("Chinese Delivery Menu", "Old menu but from a trusty establishment, too bad you have no phone to order on...")]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+earlier adventurers. The only exit is to the south.""", [Item("Opened Treasure Chest", "Only contains a piece of paper with an I.O.U. written on it.")]),
 }
 
 
@@ -40,7 +41,7 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-player = Player("John", room["outside"])
+player = Player("John", room["outside"], [])
 print(f"Player {player.name} is currently in {player.current_room.roomName}")
 
 # Write a loop that:
