@@ -1,10 +1,8 @@
 class Item:
-    def __init__(self, item, item_description):
-        self.item = item
-        self.item_description = item_description
-
-    def on_get(self):
-        print(f'{self.item} added to inventory. View inventory with by pressing [i]')
-
-    def on_remove(self):
-        print(f'{self.item} removed from inventory.')
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+    def on_take(self):
+        print(f"You picked up the {self.name}. {self.description}.")
+    def on_drop(self):
+        print(f"You dropped the {self.name}")

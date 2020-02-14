@@ -5,24 +5,39 @@ class Player:
     def __init__(self, name, starting_room, inventory):
           self.name = name
           self.current_room = starting_room
-          self.items_inventory = inventory
+          self.inventory = []
 
-    def get_item(self, item):
-        for i in self.current_room.items_in:
-            print('Picking up item', item)
-
-            if item == i.item:
-                self.items_inventory.append(i)
-                self.current_room.items_in.remove(i)
-                i.on_get()  
+    def take(self, item):
+        for i in self.current_room.items_in_room:
+            if item.lower() == i.name.lower():
+                self.inventory.append(i)
+                self.current_room.items_in_room.remove(i)
+                i.on_take()  
             else:
                 print('Unable to add item to inventory')
                
-    def remove_item(self, item):
-        for f in self.items_inventory:
-            if (item == f.item):
-                self.items_inventory.remove(f)
-                f.on_remove()
+    def drop(self, item):
+        for i in self.inventory:
+            if item.lower() == i.name.lower():
+                self.inventory.remove(i)
+                i.on_drop()
                 print(f'{item} has been removed from inventory!')
             else:
-                print('Unable to remove item')
+                print()
+
+    def getInventory(self):
+            if len(self.inventory) == 0:
+                return "You are carrying nothing"
+            output = "You are carrying a "
+            if len(self.inventory) == 1:
+                output += self.inventory[0].name
+                return output
+            else: 
+                for i in self.inventory:
+                    if i == self.inventory[-1]:
+                        output += "and a " + i.name
+                        if len(self.inventory) == 2:
+
+                            output = output.replace(",","")
+                        return output 
+                    output += i.name + ", "
